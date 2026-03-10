@@ -8,13 +8,14 @@
   </head>
 
   <body>
+    
     <nav>
         <div class="nav-wrapper teal" style="padding-left: 10px;">
            <a href="#!" class="brand-logo">Ajax Demo</a>
         </div>
     </nav>
     <main class="row" style="padding: 40px">
-         <table>
+         <table id="T1">
            <thead>
                 <tr>
                    <th>#</th>
@@ -28,7 +29,30 @@
                   </tbody>
            </table>
      </main>
-     <script>
-     </script>
+    <script>
+      function drawTable(records){
+        let result = document.querySelector('#T1');
+        //add html code inside of result
+        let html = '<h2>Table</h2>';// create html string
+        for(let record of records){
+            //build html string
+            html += `<tr>
+              <td>${record.id}</td>
+              <td>${record.name}</td>
+              <td>${record.brewery_type}</td>
+              <td>${record.website_url}</td>    
+            </tr>`;
+        }
+        result.innerHTML = html;//add html string to DOM
+      }
+
+      //testing the function
+      drawTable([{
+        id: 1,
+        name: "bob's",
+        brewery_type: "fire",
+        website_url:"https://bobs.com"
+      }]);
+    </script>
   </body>
 </html>
